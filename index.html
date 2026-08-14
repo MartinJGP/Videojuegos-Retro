@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Retro Arcade: Revive la era dorada de los videojuegos. Juegos clásicos, consolas legendarias y nostalgia retro.">
+    <title>RETRO ARCADE | Level Up Your Nostalgia</title>
+    <!-- Google Fonts: Orbitron (Cyberpunk) & Press Start 2P (Arcade) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <h2 class="blink">INSERT COIN</h2>
+            <p>LOADING...</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" aria-label="Inicio">
+                <span class="pixel-icon">👾</span> RETRO ARCADE
+            </a>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Abrir menú" tabindex="0">
+                <span></span><span></span><span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#games">Juegos</a></li>
+                <li><a href="#consoles">Consolas</a></li>
+                <li><a href="#timeline">Historia</a></li>
+                <li><a href="#newsletter">Contacto</a></li>
+                <li><button class="btn-neon nav-btn">INSERT COIN</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="hero-content fade-in">
+            <h1 class="glitch" data-text="LEVEL UP YOUR NOSTALGIA">LEVEL UP YOUR NOSTALGIA</h1>
+            <p class="subtitle">Revive la era dorada de los videojuegos.</p>
+            <div class="hero-buttons">
+                <a href="#games" class="btn-primary">EXPLORAR JUEGOS</a>
+                <a href="#arcade-experience" class="btn-secondary">ENTRAR AL ARCADE</a>
+            </div>
+        </div>
+        <!-- Elementos decorativos CSS -->
+        <div class="grid-floor"></div>
+        <div class="particles" aria-hidden="true"></div>
+    </header>
+
+    <!-- Legendary Games Section -->
+    <section id="games" class="section-container">
+        <div class="section-header fade-in">
+            <h2 class="arcade-title text-cyan">LEGENDARY GAMES</h2>
+            <p>Los clásicos que definieron una generación.</p>
+        </div>
+
+        <div class="filters fade-in">
+            <button class="filter-btn active" data-filter="all">TODOS</button>
+            <button class="filter-btn" data-filter="accion">ACCIÓN</button>
+            <button class="filter-btn" data-filter="carreras">CARRERAS</button>
+            <button class="filter-btn" data-filter="rpg">RPG</button>
+            <button class="filter-btn" data-filter="arcade">ARCADE</button>
+            <button class="filter-btn" data-filter="aventura">AVENTURA</button>
+        </div>
+
+        <div class="games-grid">
+            <!-- Tarjetas de juegos -->
+            <article class="game-card fade-in" data-genre="accion">
+                <div class="game-img action-bg"></div>
+                <div class="game-info">
+                    <h3>Pixel Warrior</h3>
+                    <div class="game-meta"><span>1989</span> | <span>Acción</span> | <span>Arcade</span></div>
+                    <p>Ábrete paso a través de hordas cibernéticas en este beat 'em up.</p>
+                    <button class="btn-play">PLAY ▶</button>
+                </div>
+            </article>
+
+            <article class="game-card fade-in" data-genre="carreras" style="transition-delay: 0.1s;">
+                <div class="game-img racing-bg"></div>
+                <div class="game-info">
+                    <h3>Cyber Racer</h3>
+                    <div class="game-meta"><span>1992</span> | <span>Carreras</span> | <span>16-Bit</span></div>
+                    <p>Velocidad de neón y derrapes peligrosos en el año 20XX.</p>
+                    <button class="btn-play">PLAY ▶</button>
+                </div>
+            </article>
+
+            <article class="game-card fade-in" data-genre="arcade" style="transition-delay: 0.2s;">
+                <div class="game-img space-bg"></div>
+                <div class="game-info">
+                    <h3>Space Invaders X</h3>
+                    <div class="game-meta"><span>1981</span> | <span>Arcade</span> | <span>8-Bit</span></div>
+                    <p>Defiende la Tierra de la amenaza alienígena pixelada.</p>
+                    <button class="btn-play">PLAY ▶</button>
+                </div>
+            </article>
+
+            <article class="game-card fade-in" data-genre="accion" style="transition-delay: 0.3s;">
+                <div class="game-img fight-bg"></div>
+                <div class="game-info">
+                    <h3>Street Fighter Legends</h3>
+                    <div class="game-meta"><span>1994</span> | <span>Lucha</span> | <span>Arcade</span></div>
+                    <p>Torneo mundial de artes marciales con combos devastadores.</p>
+                    <button class="btn-play">PLAY ▶</button>
+                </div>
+            </article>
+
+            <article class="game-card fade-in" data-genre="rpg">
+                <div class="game-img rpg-bg"></div>
+                <div class="game-info">
+                    <h3>Dungeon Quest</h3>
+                    <div class="game-meta"><span>1990</span> | <span>RPG</span> | <span>8-Bit</span></div>
+                    <p>Explora mazmorras oscuras y salva al reino del dragón oscuro.</p>
+                    <button class="btn-play">PLAY ▶</button>
+                </div>
+            </article>
+
+            <article class="game-card fade-in" data-genre="accion" style="transition-delay: 0.1s;">
+                <div class="game-img samurai-bg"></div>
+                <div class="game-info">
+                    <h3>Neon Samurai</h3>
+                    <div class="game-meta"><span>1995</span> | <span>Acción</span> | <span>16-Bit</span></div>
+                    <p>Corta a tus enemigos al ritmo de una banda sonora synthwave.</p>
+                    <button class="btn-play">PLAY ▶</button>
+                </div>
+            </article>
+
+            <article class="game-card fade-in" data-genre="carreras" style="transition-delay: 0.2s;">
+                <div class="game-img kart-bg"></div>
+                <div class="game-info">
+                    <h3>Turbo Kart 94</h3>
+                    <div class="game-meta"><span>1994</span> | <span>Carreras</span> | <span>32-Bit</span></div>
+                    <p>Lanza objetos y arruina amistades en la línea de meta.</p>
+                    <button class="btn-play">PLAY ▶</button>
+                </div>
+            </article>
+
+            <article class="game-card fade-in" data-genre="aventura" style="transition-delay: 0.3s;">
+                <div class="game-img adventure-bg"></div>
+                <div class="game-info">
+                    <h3>Galaxy Hunter</h3>
+                    <div class="game-meta"><span>1998</span> | <span>Aventura</span> | <span>3D Gen 1</span></div>
+                    <p>Exploración espacial en polígonos texturizados que revolucionaron la era.</p>
+                    <button class="btn-play">PLAY ▶</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Legendary Machines Section -->
+    <section id="consoles" class="section-container dark-bg">
+        <div class="section-header fade-in">
+            <h2 class="arcade-title text-pink">LEGENDARY MACHINES</h2>
+            <p>El hardware que alimentó nuestros sueños.</p>
+        </div>
+        <div class="consoles-grid">
+            <div class="console-card fade-in">
+                <h3 class="text-yellow">8-BIT MASTER</h3>
+                <span class="year">1985</span>
+                <div class="stat-bar">
+                    <div class="stat-fill" style="width: 40%"><span>8-Bits</span></div>
+                </div>
+                <div class="stat-bar">
+                    <div class="stat-fill bg-cyan" style="width: 75%"><span>Catálogo: 700+</span></div>
+                </div>
+            </div>
+            <div class="console-card fade-in" style="transition-delay: 0.1s;">
+                <h3 class="text-purple">SUPER PIXEL</h3>
+                <span class="year">1991</span>
+                <div class="stat-bar">
+                    <div class="stat-fill" style="width: 60%"><span>16-Bits</span></div>
+                </div>
+                <div class="stat-bar">
+                    <div class="stat-fill bg-cyan" style="width: 85%"><span>Catálogo: 1200+</span></div>
+                </div>
+            </div>
+            <div class="console-card fade-in" style="transition-delay: 0.2s;">
+                <h3 class="text-cyan">TURBO 64</h3>
+                <span class="year">1996</span>
+                <div class="stat-bar">
+                    <div class="stat-fill" style="width: 80%"><span>64-Bits (3D)</span></div>
+                </div>
+                <div class="stat-bar">
+                    <div class="stat-fill bg-cyan" style="width: 60%"><span>Catálogo: 350+</span></div>
+                </div>
+            </div>
+            <div class="console-card fade-in" style="transition-delay: 0.3s;">
+                <h3 class="text-pink">NEO ARCADE</h3>
+                <span class="year">1999</span>
+                <div class="stat-bar">
+                    <div class="stat-fill" style="width: 100%"><span>128-Bits</span></div>
+                </div>
+                <div class="stat-bar">
+                    <div class="stat-fill bg-cyan" style="width: 95%"><span>Catálogo: 2000+</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Panel -->
+    <section id="stats" class="stats-panel fade-in">
+        <div class="stat-item">
+            <h3 class="stat-number text-cyan" data-target="500">0</h3><span class="plus">+</span>
+            <p>Juegos Clásicos</p>
+        </div>
+        <div class="stat-item">
+            <h3 class="stat-number text-pink" data-target="25">0</h3>
+            <p>Consolas</p>
+        </div>
+        <div class="stat-item">
+            <h3 class="stat-number text-purple" data-target="40000">0</h3><span class="plus">+</span>
+            <p>Jugadores Activos</p>
+        </div>
+        <div class="stat-item text-only">
+            <h3 class="text-yellow">1980<br>2005</h3>
+            <p>La Era Dorada</p>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="section-container">
+        <div class="section-header fade-in">
+            <h2 class="arcade-title text-purple">THE GOLDEN ERA</h2>
+        </div>
+        <div class="timeline-container">
+            <div class="timeline-item fade-in">
+                <div class="timeline-year text-cyan">1983</div>
+                <div class="timeline-content">
+                    <h4>The Arcade Revolution</h4>
+                    <p>Los salones recreativos dominan el mundo con luces de neón y sonidos sintetizados.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-year text-pink">1987</div>
+                <div class="timeline-content">
+                    <h4>The 8-Bit Era</h4>
+                    <p>Las consolas caseras rescatan la industria. Los sprites pixelados toman el control del salón.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-year text-purple">1991</div>
+                <div class="timeline-content">
+                    <h4>16-Bit Explosion</h4>
+                    <p>La guerra de las consolas estalla. Colores vibrantes y procesadores de sonido estéreo.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-year text-yellow">1996</div>
+                <div class="timeline-content">
+                    <h4>3D Gaming</h4>
+                    <p>Los polígonos revolucionan el diseño de niveles. Bienvenido a la tercera dimensión.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-year text-cyan">2000</div>
+                <div class="timeline-content">
+                    <h4>The New Millennium</h4>
+                    <p>Gráficos fotorealistas incipientes y el principio del juego en línea global.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arcade Experience & High Scores -->
+    <section id="arcade-experience" class="section-container twin-section dark-bg">
+        <!-- Arcade Machine Simulator -->
+        <div class="arcade-cabinet fade-in">
+            <div class="arcade-marquee">RETRO ARCADE</div>
+            <div class="arcade-screen" id="arcade-screen">
+                <div class="crt-overlay"></div>
+                <div id="arcade-display">
+                    <h3 class="blink text-yellow">INSERT COIN</h3>
+                </div>
+            </div>
+            <div class="arcade-panel">
+                <div class="joystick">
+                    <div class="stick"></div>
+                    <div class="ball"></div>
+                </div>
+                <div class="action-buttons">
+                    <button class="a-btn" aria-label="Start Game" id="start-game-btn">START</button>
+                    <button class="b-btn" aria-label="Action B"></button>
+                </div>
+            </div>
+            <p class="high-score-display text-cyan">HIGH SCORE: 999999</p>
+        </div>
+
+        <!-- High Scores Table -->
+        <div class="high-scores fade-in">
+            <h2 class="arcade-title text-pink text-center">LEADERBOARD</h2>
+            <table class="retro-table">
+                <thead>
+                    <tr>
+                        <th>RANK</th>
+                        <th>PLAYER</th>
+                        <th>SCORE</th>
+                        <th>GAME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-yellow">
+                        <td>1ST</td>
+                        <td>PIXEL_KING</td>
+                        <td>999999</td>
+                        <td>Cyber Racer</td>
+                    </tr>
+                    <tr>
+                        <td>2ND</td>
+                        <td>NEO_GAMER</td>
+                        <td>875430</td>
+                        <td>Pixel Warrior</td>
+                    </tr>
+                    <tr>
+                        <td>3RD</td>
+                        <td>ARCADE_90</td>
+                        <td>742100</td>
+                        <td>Space Inv X</td>
+                    </tr>
+                    <tr>
+                        <td>4TH</td>
+                        <td>RETROBOY</td>
+                        <td>689520</td>
+                        <td>Turbo Kart</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section id="newsletter" class="section-container text-center fade-in">
+        <h2 class="arcade-title text-cyan">JOIN THE ARCADE</h2>
+        <p>Recibe noticias, secretos, juegos clásicos y nostalgia directamente en tu bandeja.</p>
+        <form id="join-form" class="newsletter-form">
+            <input type="email" placeholder="PLAYER1@EMAIL.COM" required aria-label="Correo electrónico">
+            <button type="submit" class="btn-primary">JOIN NOW</button>
+        </form>
+        <div id="form-message" class="hidden text-pink arcade-font mt-2"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h2 class="glitch footer-logo" data-text="RETRO ARCADE">RETRO ARCADE</h2>
+            <p class="text-cyan">KEEP PLAYING. KEEP THE NOSTALGIA ALIVE.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram">INSTAGRAM</a>
+                <a href="#" aria-label="YouTube">YOUTUBE</a>
+                <a href="#" aria-label="Discord">DISCORD</a>
+                <a href="#" aria-label="GitHub">GITHUB</a>
+            </div>
+            <p class="copyright">&copy; 2026 RETRO ARCADE. Hecho con ❤️ y píxeles.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
