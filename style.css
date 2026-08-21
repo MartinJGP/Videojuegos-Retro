@@ -1,18 +1,23 @@
 /* =========================================================
-   VARIABLES & SETUP
+   RETRO PC GAMING - 2000s ERA STYLESHEET
 ========================================================= */
 
 :root {
-    --bg-color: #050505;
-    --panel-bg: #111111;
-    --c-purple: #8A2BE2;
-    --c-blue: #0044ff;
-    --c-cyan: #00FFFF;
-    --c-pink: #FF00FF;
-    --c-yellow: #FFD700;
-    --c-red: #FF003C;
-    --f-arcade: 'Press Start 2P', cursive;
-    --f-main: 'Orbitron', sans-serif;
+    --bg-color: #050606;
+    /* Negro casi industrial */
+    --panel-bg: #141617;
+    /* Gris oscuro / Paneles UI */
+    --c-hl-green: #39ff14;
+    /* Verde terminal / Half-Life */
+    --c-wc-blue: #4a90e2;
+    /* Azul Warcraft */
+    --c-metal: #636b70;
+    /* Gris metálico */
+    --c-alert: #ff4500;
+    /* Naranja/Rojo de alerta */
+    /* Tipografías de la era 2000s */
+    --f-main: 'Tahoma', 'Trebuchet MS', sans-serif;
+    --f-arcade: 'Courier New', monospace;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -37,7 +42,7 @@ html {
 
 body {
     background-color: var(--bg-color);
-    color: #fff;
+    color: #dfdfdf;
     font-family: var(--f-main);
     line-height: 1.6;
     overflow-x: hidden;
@@ -55,43 +60,46 @@ body::after {
     left: 0;
     bottom: 0;
     right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
     z-index: 9999;
     background-size: 100% 3px, 3px 100%;
     pointer-events: none;
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 
-/* Typography Colors */
+/* Typography Colors (Compatibilidad con clases antiguas y nuevas) */
 
-.text-cyan {
-    color: var(--c-cyan);
-    text-shadow: 0 0 10px var(--c-cyan);
+.text-cyan,
+.text-hl-green {
+    color: var(--c-hl-green);
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.4);
 }
 
-.text-pink {
-    color: var(--c-pink);
-    text-shadow: 0 0 10px var(--c-pink);
+.text-pink,
+.text-wc-blue {
+    color: var(--c-wc-blue);
+    text-shadow: 0 0 5px rgba(74, 144, 226, 0.4);
 }
 
-.text-yellow {
-    color: var(--c-yellow);
-    text-shadow: 0 0 10px var(--c-yellow);
+.text-yellow,
+.text-alert {
+    color: var(--c-alert);
 }
 
-.text-purple {
-    color: var(--c-purple);
-    text-shadow: 0 0 10px var(--c-purple);
+.text-purple,
+.text-metal {
+    color: var(--c-metal);
 }
 
 .arcade-font {
     font-family: var(--f-arcade);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    font-weight: bold;
 }
 
 .text-center {
-    text-center: center;
+    text-align: center;
 }
 
 .mt-2 {
@@ -178,24 +186,21 @@ body::after {
 }
 
 .glitch::before {
-    left: 3px;
-    text-shadow: -2px 0 var(--c-red);
+    left: 2px;
+    text-shadow: -1px 0 var(--c-alert);
     animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
 }
 
 .glitch::after {
-    left: -3px;
-    text-shadow: -2px 0 var(--c-cyan);
+    left: -2px;
+    text-shadow: -1px 0 var(--c-wc-blue);
     animation: glitch-anim-2 3s infinite linear alternate-reverse;
 }
 
-
-/* Scroll Fade In */
-
 .fade-in {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(15px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .fade-in.visible {
@@ -221,32 +226,33 @@ body::after {
     z-index: 10000;
     transition: opacity 0.5s;
     font-family: var(--f-arcade);
-    color: var(--c-yellow);
+    color: var(--c-hl-green);
     text-align: center;
 }
 
 #preloader h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 2rem;
-    text-shadow: 0 0 15px var(--c-yellow);
 }
 
 #preloader p {
-    font-size: 1rem;
-    color: var(--c-cyan);
+    font-size: 0.9rem;
+    color: var(--c-metal);
     margin-bottom: 1rem;
 }
 
 .progress-bar {
-    width: 250px;
-    height: 10px;
-    border: 2px solid var(--c-cyan);
+    width: 300px;
+    height: 24px;
+    border: 2px solid var(--c-metal);
+    background: #000;
     margin: 0 auto;
+    padding: 2px;
 }
 
 .progress-fill {
     height: 100%;
-    background: var(--c-cyan);
+    background: var(--c-hl-green);
     width: 0%;
     animation: loadBar 2s ease forwards;
 }
@@ -266,28 +272,28 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(5, 5, 5, 0.9);
-    backdrop-filter: blur(10px);
-    border-bottom: 2px solid var(--c-purple);
-    box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+    background: rgba(10, 12, 13, 0.95);
+    border-bottom: 2px solid var(--c-metal);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
 
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 0.8rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-family: var(--f-arcade);
+    font-family: var(--f-main);
+    font-weight: bold;
     font-size: 1.2rem;
-    color: var(--c-cyan);
+    color: var(--c-metal);
     text-decoration: none;
-    text-shadow: 0 0 10px var(--c-cyan);
+    letter-spacing: 1px;
 }
 
 .nav-links {
@@ -299,38 +305,33 @@ nav {
 
 .nav-links a {
     text-decoration: none;
-    color: #fff;
+    color: #ccc;
     text-transform: uppercase;
-    font-weight: 700;
-    transition: 0.3s;
+    font-weight: bold;
+    transition: 0.2s;
+    font-size: 0.85rem;
 }
 
 .nav-links a:hover {
-    color: var(--c-pink);
-    text-shadow: 0 0 10px var(--c-pink);
+    color: var(--c-wc-blue);
 }
 
 .btn-neon {
-    background: transparent;
-    border: 2px solid var(--c-cyan);
-    color: var(--c-cyan);
+    background: rgba(57, 255, 20, 0.1);
+    border: 1px solid var(--c-hl-green);
+    color: var(--c-hl-green);
     padding: 0.5rem 1rem;
     font-family: var(--f-arcade);
     font-size: 0.8rem;
     cursor: pointer;
-    box-shadow: 0 0 10px var(--c-cyan) inset, 0 0 10px var(--c-cyan);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .btn-neon:hover,
 .btn-neon:focus {
-    background: var(--c-cyan);
+    background: var(--c-hl-green);
     color: var(--bg-color);
-    box-shadow: 0 0 20px var(--c-cyan) inset, 0 0 30px var(--c-cyan);
 }
-
-
-/* Mobile Menu */
 
 .menu-toggle {
     display: none;
@@ -343,7 +344,7 @@ nav {
     display: block;
     width: 25px;
     height: 3px;
-    background: var(--c-cyan);
+    background: var(--c-metal);
 }
 
 @media (max-width: 768px) {
@@ -356,9 +357,9 @@ nav {
         left: -100%;
         flex-direction: column;
         width: 100%;
-        background: rgba(5, 5, 5, 0.95);
+        background: rgba(10, 12, 13, 0.98);
         padding: 2rem 0;
-        border-bottom: 2px solid var(--c-purple);
+        border-bottom: 2px solid var(--c-metal);
         transition: 0.3s;
     }
     .nav-links.active {
@@ -379,7 +380,7 @@ nav {
     align-items: center;
     text-align: center;
     position: relative;
-    background: radial-gradient(circle at center, #1a0b2e 0%, var(--bg-color) 70%);
+    background: radial-gradient(circle at center, #111518 0%, var(--bg-color) 70%);
 }
 
 .hero-content {
@@ -391,13 +392,16 @@ nav {
     font-size: clamp(2rem, 5vw, 4rem);
     margin-bottom: 1rem;
     line-height: 1.2;
+    font-family: var(--f-main);
+    text-shadow: 2px 2px 4px #000;
 }
 
 .subtitle {
-    font-size: 1.5rem;
-    color: #aaa;
+    font-size: 1.1rem;
+    color: #888;
     margin-bottom: 2rem;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    font-family: var(--f-arcade);
 }
 
 .hero-buttons {
@@ -410,44 +414,37 @@ nav {
 .btn-primary,
 .btn-secondary {
     text-decoration: none;
-    padding: 1rem 2rem;
-    font-weight: 900;
+    padding: 0.8rem 1.5rem;
+    font-weight: bold;
     letter-spacing: 1px;
     border: none;
     cursor: pointer;
     font-family: var(--f-main);
-    transition: 0.3s;
+    transition: 0.2s;
+    font-size: 0.9rem;
 }
 
 .btn-primary {
-    background: var(--c-pink);
+    background: var(--c-metal);
     color: #fff;
-    box-shadow: 0 0 15px var(--c-pink);
+    border: 2px solid #888;
+    box-shadow: 2px 2px 0px #000;
 }
 
 .btn-primary:hover {
-    background: #fff;
-    color: var(--c-pink);
-    box-shadow: 0 0 30px var(--c-pink);
-    transform: scale(1.05);
+    background: var(--c-wc-blue);
+    border-color: #fff;
 }
 
 .btn-secondary {
-    background: transparent;
-    color: var(--c-cyan);
-    border: 2px solid var(--c-cyan);
-    box-shadow: 0 0 15px var(--c-cyan) inset;
+    background: #000;
+    color: var(--c-hl-green);
+    border: 1px solid var(--c-hl-green);
 }
 
 .btn-secondary:hover {
-    background: var(--c-cyan);
-    color: var(--bg-color);
-    box-shadow: 0 0 30px var(--c-cyan);
-    transform: scale(1.05);
+    background: rgba(57, 255, 20, 0.15);
 }
-
-
-/* Synthwave Grid Floor */
 
 .grid-floor {
     position: absolute;
@@ -455,10 +452,11 @@ nav {
     left: 0;
     width: 100%;
     height: 30%;
-    background-image: linear-gradient(transparent 65%, rgba(0, 255, 255, 0.4) 70%, transparent 75%), linear-gradient(90deg, transparent 65%, rgba(255, 0, 255, 0.4) 70%, transparent 75%);
-    background-size: 100% 30px, 40px 100%;
-    transform: perspective(500px) rotateX(60deg);
+    background-image: linear-gradient(transparent 65%, rgba(57, 255, 20, 0.1) 70%, transparent 75%), linear-gradient(90deg, transparent 65%, rgba(57, 255, 20, 0.1) 70%, transparent 75%);
+    background-size: 100% 40px, 50px 100%;
+    transform: perspective(600px) rotateX(60deg);
     z-index: 1;
+    border-top: 1px solid rgba(57, 255, 20, 0.2);
 }
 
 
@@ -469,24 +467,25 @@ nav {
 .section-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 6rem 2rem;
+    padding: 5rem 2rem;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .arcade-title {
     font-family: var(--f-arcade);
-    font-size: clamp(1.2rem, 3vw, 2.5rem);
+    font-size: clamp(1.2rem, 3vw, 2rem);
     margin-bottom: 1rem;
+    color: #fff;
 }
 
 .dark-bg {
-    background-color: #080808;
-    border-top: 1px solid #111;
-    border-bottom: 1px solid #111;
+    background-color: #08090a;
+    border-top: 1px solid #1a1c1d;
+    border-bottom: 1px solid #1a1c1d;
 }
 
 
@@ -499,135 +498,141 @@ nav {
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 .filter-btn {
-    background: transparent;
-    border: 1px solid #333;
-    color: #fff;
-    padding: 0.5rem 1rem;
+    background: var(--panel-bg);
+    border: 1px solid var(--c-metal);
+    color: #aaa;
+    padding: 0.5rem 1.5rem;
     font-family: var(--f-main);
+    font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.2s;
+    border-radius: 0;
+    font-size: 0.85rem;
+    box-shadow: 1px 1px 0 #000;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
-    border-color: var(--c-cyan);
-    color: var(--c-cyan);
-    box-shadow: 0 0 10px var(--c-cyan);
+    background: var(--c-metal);
+    border-color: #fff;
+    color: #fff;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 2rem;
 }
 
 .game-card {
     background: var(--panel-bg);
-    border: 2px solid #222;
-    border-radius: 5px;
+    border: 1px solid var(--c-metal);
+    border-radius: 0;
     overflow: hidden;
-    transition: 0.4s;
+    transition: 0.2s;
     position: relative;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
 }
 
 .game-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--c-pink);
-    box-shadow: 0 10px 20px rgba(255, 0, 255, 0.3);
+    transform: translateY(-3px);
+    border-color: var(--c-hl-green);
+    box-shadow: 0 5px 15px rgba(57, 255, 20, 0.1);
 }
 
 .game-img {
-    height: 180px;
+    height: 160px;
     background-size: cover;
     background-position: center;
-    border-bottom: 2px solid #222;
+    border-bottom: 1px solid #333;
+    filter: grayscale(30%) contrast(110%);
 }
 
-
-/* Simulated backgrounds with CSS gradients since we use no external images */
-
 .action-bg {
-    background: linear-gradient(45deg, #4b0000, #ff0000);
+    background: linear-gradient(45deg, #112211, #224422);
 }
 
 .racing-bg {
-    background: linear-gradient(45deg, #001f3f, #0074D9);
+    background: linear-gradient(45deg, #111, #333);
 }
 
 .space-bg {
-    background: radial-gradient(circle, #000 40%, #fff 42%, #000 45%);
-    background-size: 20px 20px;
+    background: radial-gradient(circle, #001122 40%, #002244 100%);
 }
 
 .fight-bg {
-    background: linear-gradient(135deg, #ff851b, #85144b);
+    background: linear-gradient(135deg, #441111, #220000);
 }
 
 .rpg-bg {
-    background: linear-gradient(to bottom, #2ECC40, #01FF70);
+    background: linear-gradient(to bottom, #001f3f, #003366);
 }
 
 .samurai-bg {
-    background: linear-gradient(45deg, #F012BE, #B10DC9);
+    background: linear-gradient(45deg, #333, #555);
 }
 
 .kart-bg {
-    background: repeating-linear-gradient(45deg, #FFDC00, #FFDC00 10px, #000 10px, #000 20px);
+    background: repeating-linear-gradient(45deg, #222, #222 10px, #111 10px, #111 20px);
 }
 
 .adventure-bg {
-    background: linear-gradient(180deg, #39CCCC, #001f3f);
+    background: linear-gradient(180deg, #1a2a3a, #0a1a2a);
 }
 
 .game-info {
-    padding: 1.5rem;
+    padding: 1.2rem;
 }
 
 .game-info h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 0.5rem;
-    color: var(--c-cyan);
+    font-family: var(--f-main);
+    font-weight: bold;
+    color: #fff;
 }
 
 .game-meta {
-    font-size: 0.8rem;
-    color: #888;
+    font-size: 0.75rem;
+    color: #777;
     margin-bottom: 1rem;
     font-family: var(--f-arcade);
-    font-size: 0.6rem;
 }
 
 .game-info p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin-bottom: 1.5rem;
-    color: #ccc;
+    color: #aaa;
 }
 
 .btn-play {
     width: 100%;
-    background: #222;
-    border: 1px solid var(--c-pink);
-    color: var(--c-pink);
-    padding: 0.5rem;
+    background: var(--panel-bg);
+    border: 1px solid var(--c-metal);
+    color: #ccc;
+    padding: 0.6rem;
     cursor: pointer;
-    transition: 0.3s;
-    font-family: var(--f-arcade);
-    font-size: 0.8rem;
+    transition: 0.2s;
+    font-family: var(--f-main);
+    font-weight: bold;
+    font-size: 0.85rem;
+    box-shadow: 1px 1px 0 #000;
 }
 
 .game-card:hover .btn-play {
-    background: var(--c-pink);
-    color: #fff;
-    box-shadow: 0 0 15px var(--c-pink);
+    background: var(--c-hl-green);
+    color: #000;
+    border-color: var(--c-hl-green);
 }
 
 
 /* =========================================================
-   CONSOLES SECTION
+   CONSOLES / HARDWARE SECTION
 ========================================================= */
 
 .consoles-grid {
@@ -638,53 +643,53 @@ nav {
 
 .console-card {
     background: var(--panel-bg);
-    padding: 2rem;
-    border-radius: 10px;
-    border-bottom: 4px solid #333;
-    text-align: center;
+    padding: 1.5rem;
+    border: 1px solid #333;
+    border-top: 4px solid var(--c-metal);
+    text-align: left;
+    box-shadow: 2px 2px 0 #000;
 }
 
 .console-card h3 {
     font-family: var(--f-arcade);
     font-size: 1rem;
     margin-bottom: 0.5rem;
-    line-height: 1.5;
 }
 
 .year {
     display: inline-block;
-    background: #222;
+    background: #000;
+    color: var(--c-hl-green);
     padding: 2px 8px;
-    border-radius: 3px;
+    border: 1px solid var(--c-hl-green);
     margin-bottom: 1.5rem;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    font-family: var(--f-arcade);
 }
 
 .stat-bar {
     background: #000;
-    height: 20px;
+    height: 16px;
     width: 100%;
-    border-radius: 10px;
     margin-bottom: 1rem;
-    overflow: hidden;
     position: relative;
+    border: 1px solid #333;
 }
 
 .stat-fill {
     height: 100%;
-    background: var(--c-purple);
+    background: var(--c-metal);
     display: flex;
     align-items: center;
     padding-left: 10px;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
+    font-family: var(--f-main);
+    color: #fff;
     font-weight: bold;
-    width: 0;
-    /* Animated via inline style trick or JS */
 }
 
 .bg-cyan {
-    background: var(--c-cyan);
-    color: #000;
+    background: var(--c-wc-blue);
 }
 
 
@@ -696,35 +701,38 @@ nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 4rem 2rem;
-    background: #0a0a0a;
-    border: 1px solid #1a1a1a;
+    padding: 3rem 2rem;
+    background: #0c0e0f;
+    border-top: 1px solid var(--c-metal);
+    border-bottom: 1px solid var(--c-metal);
 }
 
 .stat-item {
     text-align: center;
     flex: 1;
-    min-width: 200px;
+    min-width: 150px;
     margin: 1rem;
 }
 
 .stat-number {
     font-family: var(--f-arcade);
-    font-size: 2.5rem;
+    font-size: 2rem;
     display: inline-block;
+    color: var(--c-hl-green);
 }
 
 .plus {
     font-family: var(--f-arcade);
-    font-size: 2.5rem;
-    color: #fff;
+    font-size: 2rem;
+    color: var(--c-metal);
 }
 
 .stat-item p {
     margin-top: 0.5rem;
-    color: #aaa;
+    color: #777;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 0.8rem;
+    font-weight: bold;
 }
 
 
@@ -741,12 +749,12 @@ nav {
 .timeline-container::after {
     content: '';
     position: absolute;
-    width: 4px;
-    background: #333;
+    width: 2px;
+    background: var(--c-metal);
     top: 0;
     bottom: 0;
     left: 50%;
-    margin-left: -2px;
+    margin-left: -1px;
 }
 
 .timeline-item {
@@ -769,41 +777,52 @@ nav {
 .timeline-item::after {
     content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
-    right: -10px;
+    width: 14px;
+    height: 14px;
+    right: -7px;
     background: var(--bg-color);
-    border: 4px solid var(--c-pink);
+    border: 3px solid var(--c-wc-blue);
     top: 15px;
-    border-radius: 50%;
     z-index: 1;
 }
 
 .timeline-item:nth-child(even)::after {
-    left: -10px;
+    left: -7px;
 }
 
 .timeline-year {
     font-family: var(--f-arcade);
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: var(--c-alert);
 }
 
 .timeline-content {
     background: var(--panel-bg);
-    padding: 1.5rem;
-    border-radius: 5px;
-    border: 1px solid #222;
+    padding: 1.2rem;
+    border: 1px solid #333;
+    box-shadow: 2px 2px 0 #000;
+}
+
+.timeline-content h4 {
+    font-family: var(--f-main);
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.timeline-content p {
+    font-size: 0.85rem;
+    color: #888;
 }
 
 @media (max-width: 768px) {
     .timeline-container::after {
-        left: 31px;
+        left: 20px;
     }
     .timeline-item {
         width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
+        padding-left: 50px;
+        padding-right: 15px;
     }
     .timeline-item:nth-child(even),
     .timeline-item:nth-child(odd) {
@@ -812,13 +831,13 @@ nav {
     }
     .timeline-item::after,
     .timeline-item:nth-child(even)::after {
-        left: 21px;
+        left: 13px;
     }
 }
 
 
 /* =========================================================
-   ARCADE EXPERIENCE & HIGHSCORES
+   SERVER BROWSER & TERMINAL (REEMPLAZA ARCADE)
 ========================================================= */
 
 .twin-section {
@@ -829,43 +848,44 @@ nav {
     align-items: flex-start;
 }
 
-
-/* CSS Arcade Machine Draw */
-
 .arcade-cabinet {
     width: 100%;
-    max-width: 400px;
-    background: #1a1a1a;
-    border-radius: 20px 20px 0 0;
-    border: 4px solid #333;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), inset 0 0 20px #000;
-    padding: 20px;
+    max-width: 450px;
+    background: #111;
+    border: 2px solid var(--c-metal);
+    padding: 15px;
     position: relative;
+    box-shadow: 5px 5px 0 #000;
 }
 
 .arcade-marquee {
-    background: var(--c-pink);
-    color: #fff;
+    background: #222;
+    border: 1px solid #444;
+    color: var(--c-hl-green);
     font-family: var(--f-arcade);
-    text-align: center;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 15px var(--c-pink);
-    text-shadow: 2px 2px 0 #000;
+    text-align: left;
+    padding: 8px 12px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.arcade-marquee::after {
+    content: "v1.0.4";
+    color: #555;
 }
 
 .arcade-screen {
-    background: #000;
-    border: 15px solid #2a2a2a;
-    border-radius: 20px 20px 30px 30px;
+    background: #050a05;
+    border: 8px solid #0a0a0a;
     height: 250px;
     position: relative;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: inset 0 0 30px rgba(0, 255, 255, 0.2);
+    box-shadow: inset 0 0 20px rgba(57, 255, 20, 0.1);
 }
 
 .crt-overlay {
@@ -874,7 +894,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%);
     background-size: 100% 4px;
     pointer-events: none;
     z-index: 2;
@@ -884,151 +904,158 @@ nav {
     font-family: var(--f-arcade);
     z-index: 1;
     text-align: center;
+    width: 100%;
+    padding: 20px;
 }
 
 .arcade-panel {
-    background: #222;
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 10px;
+    background: var(--panel-bg);
+    margin-top: 15px;
+    padding: 15px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    border-bottom: 5px solid #111;
-    transform: perspective(100px) rotateX(10deg);
+    border: 1px solid #333;
 }
 
 .joystick {
-    position: relative;
-    width: 40px;
-    height: 40px;
-}
-
-.stick {
-    width: 10px;
-    height: 30px;
-    background: #555;
-    position: absolute;
-    bottom: 0;
-    left: 15px;
-}
-
-.ball {
-    width: 30px;
-    height: 30px;
-    background: var(--c-red);
-    border-radius: 50%;
-    position: absolute;
-    top: -15px;
-    left: 5px;
-    box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.5);
+    display: none;
+    /* Ocultamos el joystick por el teclado en era PC */
 }
 
 .action-buttons {
     display: flex;
-    gap: 15px;
+    gap: 10px;
+    width: 100%;
 }
 
 .a-btn,
 .b-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: none;
+    flex: 1;
+    padding: 10px;
+    background: var(--c-metal);
+    border: 1px solid #888;
+    color: #fff;
+    font-family: var(--f-main);
+    font-weight: bold;
+    font-size: 0.8rem;
     cursor: pointer;
-    box-shadow: 0 5px 0 #000, inset -3px -3px 5px rgba(0, 0, 0, 0.3);
-    outline: none;
-    font-family: var(--f-arcade);
-    font-size: 0.5rem;
-    color: #000;
+    box-shadow: 2px 2px 0 #000;
+    border-radius: 0;
 }
 
 .a-btn {
-    background: var(--c-yellow);
+    background: #222;
 }
 
-.a-btn:active {
-    transform: translateY(5px);
+.a-btn:active,
+.b-btn:active {
+    transform: translate(2px, 2px);
     box-shadow: 0 0 0 #000;
 }
 
 .b-btn {
-    background: var(--c-cyan);
+    background: var(--c-metal);
 }
 
 .high-score-display {
-    text-align: center;
+    text-align: left;
     margin-top: 15px;
     font-family: var(--f-arcade);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    color: #555;
 }
 
 
-/* High Scores Table */
+/* LEADERBOARD -> SERVER LIST */
 
 .high-scores {
     flex: 1;
     min-width: 300px;
-    background: var(--panel-bg);
-    padding: 2rem;
-    border-radius: 10px;
-    border: 1px solid var(--c-pink);
+    background: #000;
+    padding: 1.5rem;
+    border: 1px solid #333;
+    box-shadow: 3px 3px 0 #000;
 }
 
 .retro-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: var(--f-arcade);
-    font-size: 0.7rem;
-    line-height: 2.5;
+    font-family: var(--f-main);
+    font-size: 0.85rem;
+    line-height: 2;
 }
 
 .retro-table th {
-    color: #888;
+    color: var(--c-wc-blue);
     text-align: left;
-    border-bottom: 2px solid #333;
+    border-bottom: 1px solid var(--c-wc-blue);
+    padding-bottom: 5px;
+    font-weight: bold;
 }
 
 .retro-table td {
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #111;
+    padding: 8px 0;
+    color: #ccc;
+}
+
+.retro-table tr:hover td {
+    background: #111;
+    color: #fff;
+    cursor: pointer;
 }
 
 
 /* =========================================================
-   NEWSLETTER & FOOTER
+   NEWSLETTER (TERMINAL INPUT)
 ========================================================= */
 
 .newsletter-form {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 0;
     margin-top: 2rem;
     flex-wrap: wrap;
 }
 
 .newsletter-form input {
-    background: transparent;
-    border: 2px solid var(--c-purple);
-    padding: 1rem;
-    color: #fff;
-    font-family: var(--f-main);
+    background: #000;
+    border: 1px solid var(--c-metal);
+    padding: 0.8rem 1rem;
+    color: var(--c-hl-green);
+    font-family: var(--f-arcade);
     width: 300px;
     outline: none;
+    border-right: none;
+    font-size: 0.9rem;
 }
 
 .newsletter-form input:focus {
-    border-color: var(--c-cyan);
-    box-shadow: 0 0 10px var(--c-cyan);
+    border-color: var(--c-wc-blue);
+}
+
+.newsletter-form .btn-primary {
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid var(--c-metal);
+    margin: 0;
+    height: 100%;
 }
 
 .hidden {
     display: none;
 }
 
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
 footer {
-    background: #020202;
+    background: #050606;
     padding: 4rem 2rem 2rem;
-    border-top: 2px solid var(--c-purple);
+    border-top: 2px solid #222;
     text-align: center;
 }
 
@@ -1036,6 +1063,10 @@ footer {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     display: inline-block;
+    color: var(--c-metal);
+    font-family: var(--f-main);
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
 .social-links {
@@ -1047,19 +1078,20 @@ footer {
 }
 
 .social-links a {
-    color: #888;
+    color: #666;
     text-decoration: none;
-    transition: 0.3s;
+    transition: 0.2s;
     font-family: var(--f-arcade);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
 }
 
 .social-links a:hover {
-    color: var(--c-cyan);
-    text-shadow: 0 0 10px var(--c-cyan);
+    color: var(--c-wc-blue);
 }
 
 .copyright {
-    color: #555;
-    font-size: 0.9rem;
+    color: #444;
+    font-size: 0.8rem;
+    font-family: var(--f-main);
 }
