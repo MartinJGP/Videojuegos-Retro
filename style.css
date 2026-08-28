@@ -1006,6 +1006,118 @@ nav {
     cursor: pointer;
 }
 
+.server-search {
+    width: 100%;
+    background: #000;
+    border: 1px solid var(--c-metal);
+    padding: 0.6rem 1rem;
+    color: var(--c-hl-green);
+    font-family: var(--f-arcade);
+    font-size: 0.8rem;
+    outline: none;
+    margin-bottom: 1rem;
+}
+
+.server-search:focus {
+    border-color: var(--c-wc-blue);
+}
+
+.retro-table .hidden-row {
+    display: none;
+}
+
+/* Terminal interactiva */
+.terminal-output {
+    text-align: left;
+    width: 100%;
+    max-height: 205px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.terminal-output p {
+    margin: 0;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.terminal-prompt {
+    font-family: var(--f-arcade);
+    margin-right: 6px;
+    white-space: nowrap;
+}
+
+.terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--c-hl-green);
+    font-family: var(--f-arcade);
+    font-size: 0.85rem;
+    caret-color: var(--c-hl-green);
+}
+
+/* Cuenta atrás de partida (LAN party) */
+.match-timer {
+    margin-top: 15px;
+    border: 1px solid #333;
+    background: var(--panel-bg);
+    padding: 12px;
+    text-align: center;
+}
+
+.timer-label {
+    font-family: var(--f-arcade);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.timer-display {
+    font-family: var(--f-arcade);
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin: 6px 0 10px;
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
+}
+
+.timer-controls {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.timer-select {
+    background: #000;
+    color: var(--c-hl-green);
+    border: 1px solid var(--c-metal);
+    font-family: var(--f-arcade);
+    font-size: 0.75rem;
+    padding: 6px 8px;
+}
+
+.timer-controls .a-btn,
+.timer-controls .b-btn {
+    flex: 0 0 auto;
+    padding: 6px 14px;
+    font-size: 0.7rem;
+}
+
+.timer-controls .a-btn:disabled,
+.timer-controls .b-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+} 
+
 
 /* =========================================================
    NEWSLETTER (TERMINAL INPUT)

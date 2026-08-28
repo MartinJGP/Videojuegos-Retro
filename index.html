@@ -224,26 +224,47 @@
             <div class="arcade-screen" id="arcade-screen">
                 <div class="crt-overlay"></div>
                 <div id="arcade-display">
-                    <div style="text-align: left; width: 100%;">
+                    <div id="terminal-output" class="terminal-output">
                         <p class="text-hl-green arcade-font">Mounting file system... [OK]</p>
                         <p class="text-hl-green arcade-font">Bypassing bootloader... [OK]</p>
                         <p class="text-hl-green arcade-font">Injecting hex values... [OK]</p>
-                        <h3 class="blink text-alert mt-2" style="font-size: 1rem;">> AWAITING CONNECTION_</h3>
+                        <p class="text-metal arcade-font">&gt; type 'help' for commands</p>
+                    </div>
+                    <div class="terminal-input-line">
+                        <span class="terminal-prompt text-hl-green">&gt;_</span>
+                        <input type="text" id="terminal-input" class="terminal-input" aria-label="Entrada de terminal" autocomplete="off" spellcheck="false">
                     </div>
                 </div>
             </div>
             <div class="arcade-panel">
                 <div class="action-buttons">
                     <button class="a-btn" aria-label="Execute" id="start-game-btn">EXECUTE ./RUN</button>
-                    <button class="b-btn" aria-label="Abort">ABORT</button>
+                    <button class="b-btn" aria-label="Abort" id="abort-btn">ABORT</button>
                 </div>
             </div>
             <p class="high-score-display">SYSTEM STATUS: ONLINE</p>
+
+            <div class="match-timer">
+                <div class="timer-label text-metal">MATCH TIMER</div>
+                <div id="timer-display" class="timer-display text-hl-green">15:00</div>
+                <div class="timer-controls">
+                    <select id="timer-duration" class="timer-select" aria-label="Duración de la partida">
+                        <option value="15" selected>15 min</option>
+                        <option value="30">30 min</option>
+                        <option value="45">45 min</option>
+                        <option value="60">60 min</option>
+                    </select>
+                    <button class="a-btn" id="timer-start">START</button>
+                    <button class="b-btn" id="timer-pause">PAUSE</button>
+                    <button class="b-btn" id="timer-reset">RESET</button>
+                </div>
+            </div>
         </div>
 
         <!-- Server List Table -->
         <div class="high-scores fade-in">
             <h2 class="arcade-title text-wc-blue text-center" style="font-size: 1.5rem;">SERVER BROWSER</h2>
+            <input type="text" id="server-search" class="server-search" placeholder="> QUERY SERVER / MAP..." aria-label="Buscar servidor" autocomplete="off">
             <table class="retro-table mt-2">
                 <thead>
                     <tr>

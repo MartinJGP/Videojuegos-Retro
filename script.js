@@ -135,11 +135,117 @@ filterBtns.forEach(btn => {
 });
 
 // =========================================================
-// 6. SIMULACIÓN DE MÁQUINA ARCADE
+// 6. TERMINAL INTERACTIVA
 // =========================================================
+const terminalOutput = document.getElementById('terminal-output');
+const terminalInput = document.getElementById('terminal-input');
 const startBtn = document.getElementById('start-game-btn');
-const arcadeDisplay = document.getElementById('arcade-display');
+const abortBtn = document.getElementById('abort-btn');
 
+const SERVERS = [
+    { name: '[OFICIAL] Co-op Campaign', map: 'c1a0_bm', players: '2/8' },
+    { name: '24/7 Crossfire Only', map: 'crossfire', players: '15/32' },
+    { name: 'Tower Defense RPG', map: 'winter_maul', players: '8/8' },
+    { name: 'Custom Antenna Test Server', map: 'de_dust2', players: '4/16' }
+];
+
+const STATS = [
+    { label: 'Valores Hex Modificados', value: '999+' },
+    { label: 'Jugadores en Red', value: '32' },
+    { label: 'Ping Promedio (ms)', value: '15' }
+];
+
+function terminalPrint(text, className = 'text-hl-green') {
+    const p = document.createElement('p');
+    p.className = `arcade-font ${className}`;
+    p.innerHTML = text;
+    terminalOutput.appendChild(p);
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+}
+
+function terminalClear() {
+    terminalOutput.innerHTML = '';
+}
+
+function terminalExecute(raw) {
+    const cmd = (raw || '').trim().toLowerCase();
+    const [base, ...args] = cmd.split(/\s+/);
+    const arg = args.join(' ');
+
+    terminalPrint(`<span class="text-metal">&gt; ${raw.trim()}</span>`, 'text-metal');
+
+    switch (base) {
+        case '':
+            break;
+        case 'help':
+        case '?':
+            terminalPrint('Comandos disponibles:');
+            terminalPrint('  help - lista de comandos', 'text-metal');
+            terminalPrint('  ls - lista los servidores', 'text-metal');
+            terminalPrint('  connect &lt;server&gt; - conectar (p.ej. connect 1)', 'text-metal');
+            terminalPrint('  ping &lt;host&gt; - hacer ping', 'text-metal');
+            terminalPrint('  stats - estadísticas del lobby', 'text-metal');
+            terminalPrint('  scan - escanear señales LAN', 'text-metal');
+            terminalPrint('  version - versión del sistema', 'text-metal');
+            terminalPrint('  run - lanzar partida', 'text-metal');
+            terminalPrint('  clear - limpiar pantalla', 'text-metal');
+            break;
+        case 'ls':
+            terminalPrint('HOOTING SERVERS...');
+            SERVERS.forEach((s, i) => {
+                terminalPrint(`  [${i + 1}] ${s.name}  (${s.map})  ${s.players}`, 'text-metal');
+            });
+            break;
+        case 'connect': {
+            const index = parseInt(arg, 10) - 1;
+            const server = SERVERS[index];
+            if (server) {
+                playTone(880, 'square', 0.1);
+                setTimeout(() => playTone(1320, 'square', 0.2), 150);
+                terminalPrint(`Connecting to ${server.name}...`);
+                setTimeout(() => terminalPrint('[CONNECTED] waiting for players...', 'text-wc-blue'), 400);
+            } else {
+                terminalPrint('error: server not found. use "ls" to list servers.', 'text-alert');
+            }
+            break;
+        }
+        case 'ping':
+            terminalPrint(`Pinging ${arg || 'localhost'}...`);
+            setTimeout(() => terminalPrint(`Reply from ${arg || 'localhost'}: time=12ms TTL=64`, 'text-metal'), 400);
+            break;
+        case 'stats':
+            terminalPrint('LOBBY STATS:');
+            STATS.forEach(s => {
+                terminalPrint(`  ${s.label}: ${s.value}`, 'text-metal');
+            });
+            break;
+        case 'scan':
+            terminalPrint('Scanning frequency bands...');
+            setTimeout(() => terminalPrint('[OK] 4 signals found. run "ls" to list.', 'text-wc-blue'), 400);
+            break;
+        case 'version':
+            terminalPrint('RETRO LAN v2.4.1 - build 2000.01.01');
+            break;
+        case 'run':
+            startBtn.click();
+            break;
+        case 'clear':
+        case 'cls':
+            terminalClear();
+            break;
+        default:
+            terminalPrint(`command not found: ${base}. type "help" for commands.`, 'text-alert');
+    }
+}
+
+terminalInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        terminalExecute(terminalInput.value);
+        terminalInput.value = '';
+    }
+});
+
+// Ejecutar al pulsar EXECUTE ./RUN y ABORT
 startBtn.addEventListener('click', () => {
     // Secuencia de sonido de inicio de arcade
     playTone(440, 'sawtooth', 0.2);
@@ -147,18 +253,23 @@ startBtn.addEventListener('click', () => {
     setTimeout(() => playTone(880, 'sawtooth', 0.4), 400);
     setTimeout(() => playTone(1760, 'square', 0.6), 800);
 
-    // Cambio de pantalla
-    arcadeDisplay.innerHTML = '<h3 class="blink text-pink">PLAYER 1 READY</h3>';
-
+    terminalClear();
+    terminalPrint('PLAYER 1 READY');
     setTimeout(() => {
-        arcadeDisplay.innerHTML = '<h3 class="glitch text-cyan" data-text="GAME START!">GAME START!</h3>';
+        terminalPrint('GAME START!', 'text-wc-blue');
+    }, 800);
+});
 
-        // Reset después de 5 segundos
-        setTimeout(() => {
-            arcadeDisplay.innerHTML = '<h3 class="blink text-yellow">INSERT COIN</h3>';
-        }, 5000);
+abortBtn.addEventListener('click', () => {
+    playTone(200, 'sawtooth', 0.15);
+    terminalClear();
+    terminalPrint('ABORTED.');
+    terminalPrint('Insert coin to continue...', 'text-alert');
+});
 
-    }, 2000);
+// Enfocar la terminal al hacer clic en la pantalla
+document.getElementById('arcade-screen').addEventListener('click', () => {
+    terminalInput.focus();
 });
 
 // =========================================================
@@ -181,3 +292,118 @@ form.addEventListener('submit', (e) => {
     formMessage.classList.remove('hidden');
     formMessage.innerHTML = `<span class="blink">>>></span> WELCOME TO THE ARCADE, ${email.split('@')[0]}!`;
 });
+
+// =========================================================
+// 8. BÚSQUEDA EN VIVO DE SERVIDORES
+// =========================================================
+const serverSearch = document.getElementById('server-search');
+const serverRows = document.querySelectorAll('#server-search + .retro-table tbody tr');
+
+serverSearch.addEventListener('input', () => {
+    const query = serverSearch.value.trim().toLowerCase();
+
+    serverRows.forEach(row => {
+        const match = row.textContent.trim().toLowerCase().includes(query);
+        row.classList.toggle('hidden-row', !match);
+    });
+});
+
+// =========================================================
+// 9. CUENTA ATRÁS DE PARTIDA (LAN PARTY)
+// =========================================================
+const timerDisplay = document.getElementById('timer-display');
+const timerDuration = document.getElementById('timer-duration');
+const timerStart = document.getElementById('timer-start');
+const timerPause = document.getElementById('timer-pause');
+const timerReset = document.getElementById('timer-reset');
+
+let timerTotal = 15 * 60;
+let timerLeft = timerTotal;
+let timerInterval = null;
+let timerRunning = false;
+
+function setTimerDisabled(disabled) {
+    timerStart.disabled = disabled;
+    timerPause.disabled = disabled;
+    timerReset.disabled = disabled;
+}
+
+function formatTimer(seconds) {
+    const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const s = String(seconds % 60).padStart(2, '0');
+    return `${m}:${s}`;
+}
+
+function renderTimer() {
+    timerDisplay.textContent = formatTimer(timerLeft);
+    timerDisplay.classList.remove('text-alert', 'text-hl-green');
+    if (timerRunning) {
+        timerDisplay.classList.add(timerLeft <= 60 ? 'text-alert' : 'text-hl-green');
+    } else {
+        timerDisplay.classList.add('text-hl-green');
+    }
+}
+
+function timerTick() {
+    timerLeft -= 1;
+    renderTimer();
+    if (timerLeft <= 0) {
+        timerLeft = 0;
+        renderTimer();
+        clearInterval(timerInterval);
+        timerInterval = null;
+        timerRunning = false;
+        timerPause.disabled = true;
+        timerDisplay.textContent = 'MATCH OVER';
+        playTone(200, 'sawtooth', 0.3);
+        setTimeout(() => playTone(150, 'sawtooth', 0.5), 300);
+    }
+    if (timerLeft <= 10 && timerLeft > 0) {
+        playTone(880, 'square', 0.05);
+    }
+}
+
+function timerStop() {
+    if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+    timerRunning = false;
+}
+
+timerDuration.addEventListener('change', () => {
+    timerStop();
+    timerTotal = parseInt(timerDuration.value, 10) * 60;
+    timerLeft = timerTotal;
+    setTimerDisabled(false);
+    timerPause.disabled = false;
+    renderTimer();
+});
+
+timerStart.addEventListener('click', () => {
+    if (!timerRunning && timerLeft > 0) {
+        timerRunning = true;
+        timerPause.disabled = false;
+        timerStart.disabled = true;
+        playTone(660, 'square', 0.15);
+        timerInterval = setInterval(timerTick, 1000);
+        renderTimer();
+    }
+});
+
+timerPause.addEventListener('click', () => {
+    timerStop();
+    timerStart.disabled = false;
+    renderTimer();
+});
+
+timerReset.addEventListener('click', () => {
+    timerStop();
+    timerLeft = timerTotal;
+    setTimerDisabled(false);
+    timerPause.disabled = false;
+    renderTimer();
+});
+
+renderTimer();
+setTimerDisabled(false);
