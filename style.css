@@ -1006,6 +1006,26 @@ nav {
     cursor: pointer;
 }
 
+.server-search {
+    width: 100%;
+    background: #000;
+    border: 1px solid var(--c-metal);
+    padding: 0.6rem 1rem;
+    color: var(--c-hl-green);
+    font-family: var(--f-arcade);
+    font-size: 0.8rem;
+    outline: none;
+    margin-bottom: 1rem;
+}
+
+.server-search:focus {
+    border-color: var(--c-wc-blue);
+}
+
+.retro-table .hidden-row {
+    display: none;
+}
+
 
 /* =========================================================
    NEWSLETTER (TERMINAL INPUT)

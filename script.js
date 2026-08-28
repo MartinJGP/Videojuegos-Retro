@@ -181,3 +181,18 @@ form.addEventListener('submit', (e) => {
     formMessage.classList.remove('hidden');
     formMessage.innerHTML = `<span class="blink">>>></span> WELCOME TO THE ARCADE, ${email.split('@')[0]}!`;
 });
+
+// =========================================================
+// 8. BÚSQUEDA EN VIVO DE SERVIDORES
+// =========================================================
+const serverSearch = document.getElementById('server-search');
+const serverRows = document.querySelectorAll('#server-search + .retro-table tbody tr');
+
+serverSearch.addEventListener('input', () => {
+    const query = serverSearch.value.trim().toLowerCase();
+
+    serverRows.forEach(row => {
+        const match = row.textContent.trim().toLowerCase().includes(query);
+        row.classList.toggle('hidden-row', !match);
+    });
+});
