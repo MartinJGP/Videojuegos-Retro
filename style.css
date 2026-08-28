@@ -1026,6 +1026,45 @@ nav {
     display: none;
 }
 
+/* Terminal interactiva */
+.terminal-output {
+    text-align: left;
+    width: 100%;
+    max-height: 205px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.terminal-output p {
+    margin: 0;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.terminal-prompt {
+    font-family: var(--f-arcade);
+    margin-right: 6px;
+    white-space: nowrap;
+}
+
+.terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--c-hl-green);
+    font-family: var(--f-arcade);
+    font-size: 0.85rem;
+    caret-color: var(--c-hl-green);
+} 
+
 
 /* =========================================================
    NEWSLETTER (TERMINAL INPUT)

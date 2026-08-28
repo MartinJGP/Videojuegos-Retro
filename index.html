@@ -224,18 +224,22 @@
             <div class="arcade-screen" id="arcade-screen">
                 <div class="crt-overlay"></div>
                 <div id="arcade-display">
-                    <div style="text-align: left; width: 100%;">
+                    <div id="terminal-output" class="terminal-output">
                         <p class="text-hl-green arcade-font">Mounting file system... [OK]</p>
                         <p class="text-hl-green arcade-font">Bypassing bootloader... [OK]</p>
                         <p class="text-hl-green arcade-font">Injecting hex values... [OK]</p>
-                        <h3 class="blink text-alert mt-2" style="font-size: 1rem;">> AWAITING CONNECTION_</h3>
+                        <p class="text-metal arcade-font">&gt; type 'help' for commands</p>
+                    </div>
+                    <div class="terminal-input-line">
+                        <span class="terminal-prompt text-hl-green">&gt;_</span>
+                        <input type="text" id="terminal-input" class="terminal-input" aria-label="Entrada de terminal" autocomplete="off" spellcheck="false">
                     </div>
                 </div>
             </div>
             <div class="arcade-panel">
                 <div class="action-buttons">
                     <button class="a-btn" aria-label="Execute" id="start-game-btn">EXECUTE ./RUN</button>
-                    <button class="b-btn" aria-label="Abort">ABORT</button>
+                    <button class="b-btn" aria-label="Abort" id="abort-btn">ABORT</button>
                 </div>
             </div>
             <p class="high-score-display">SYSTEM STATUS: ONLINE</p>
