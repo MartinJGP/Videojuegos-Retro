@@ -243,6 +243,22 @@
                 </div>
             </div>
             <p class="high-score-display">SYSTEM STATUS: ONLINE</p>
+
+            <div class="match-timer">
+                <div class="timer-label text-metal">MATCH TIMER</div>
+                <div id="timer-display" class="timer-display text-hl-green">15:00</div>
+                <div class="timer-controls">
+                    <select id="timer-duration" class="timer-select" aria-label="Duración de la partida">
+                        <option value="15" selected>15 min</option>
+                        <option value="30">30 min</option>
+                        <option value="45">45 min</option>
+                        <option value="60">60 min</option>
+                    </select>
+                    <button class="a-btn" id="timer-start">START</button>
+                    <button class="b-btn" id="timer-pause">PAUSE</button>
+                    <button class="b-btn" id="timer-reset">RESET</button>
+                </div>
+            </div>
         </div>
 
         <!-- Server List Table -->

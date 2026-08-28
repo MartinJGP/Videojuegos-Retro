@@ -307,3 +307,103 @@ serverSearch.addEventListener('input', () => {
         row.classList.toggle('hidden-row', !match);
     });
 });
+
+// =========================================================
+// 9. CUENTA ATRÁS DE PARTIDA (LAN PARTY)
+// =========================================================
+const timerDisplay = document.getElementById('timer-display');
+const timerDuration = document.getElementById('timer-duration');
+const timerStart = document.getElementById('timer-start');
+const timerPause = document.getElementById('timer-pause');
+const timerReset = document.getElementById('timer-reset');
+
+let timerTotal = 15 * 60;
+let timerLeft = timerTotal;
+let timerInterval = null;
+let timerRunning = false;
+
+function setTimerDisabled(disabled) {
+    timerStart.disabled = disabled;
+    timerPause.disabled = disabled;
+    timerReset.disabled = disabled;
+}
+
+function formatTimer(seconds) {
+    const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const s = String(seconds % 60).padStart(2, '0');
+    return `${m}:${s}`;
+}
+
+function renderTimer() {
+    timerDisplay.textContent = formatTimer(timerLeft);
+    timerDisplay.classList.remove('text-alert', 'text-hl-green');
+    if (timerRunning) {
+        timerDisplay.classList.add(timerLeft <= 60 ? 'text-alert' : 'text-hl-green');
+    } else {
+        timerDisplay.classList.add('text-hl-green');
+    }
+}
+
+function timerTick() {
+    timerLeft -= 1;
+    renderTimer();
+    if (timerLeft <= 0) {
+        timerLeft = 0;
+        renderTimer();
+        clearInterval(timerInterval);
+        timerInterval = null;
+        timerRunning = false;
+        timerPause.disabled = true;
+        timerDisplay.textContent = 'MATCH OVER';
+        playTone(200, 'sawtooth', 0.3);
+        setTimeout(() => playTone(150, 'sawtooth', 0.5), 300);
+    }
+    if (timerLeft <= 10 && timerLeft > 0) {
+        playTone(880, 'square', 0.05);
+    }
+}
+
+function timerStop() {
+    if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+    timerRunning = false;
+}
+
+timerDuration.addEventListener('change', () => {
+    timerStop();
+    timerTotal = parseInt(timerDuration.value, 10) * 60;
+    timerLeft = timerTotal;
+    setTimerDisabled(false);
+    timerPause.disabled = false;
+    renderTimer();
+});
+
+timerStart.addEventListener('click', () => {
+    if (!timerRunning && timerLeft > 0) {
+        timerRunning = true;
+        timerPause.disabled = false;
+        timerStart.disabled = true;
+        playTone(660, 'square', 0.15);
+        timerInterval = setInterval(timerTick, 1000);
+        renderTimer();
+    }
+});
+
+timerPause.addEventListener('click', () => {
+    timerStop();
+    timerStart.disabled = false;
+    renderTimer();
+});
+
+timerReset.addEventListener('click', () => {
+    timerStop();
+    timerLeft = timerTotal;
+    setTimerDisabled(false);
+    timerPause.disabled = false;
+    renderTimer();
+});
+
+renderTimer();
+setTimerDisabled(false);

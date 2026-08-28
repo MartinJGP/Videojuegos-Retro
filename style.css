@@ -1063,6 +1063,59 @@ nav {
     font-family: var(--f-arcade);
     font-size: 0.85rem;
     caret-color: var(--c-hl-green);
+}
+
+/* Cuenta atrás de partida (LAN party) */
+.match-timer {
+    margin-top: 15px;
+    border: 1px solid #333;
+    background: var(--panel-bg);
+    padding: 12px;
+    text-align: center;
+}
+
+.timer-label {
+    font-family: var(--f-arcade);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.timer-display {
+    font-family: var(--f-arcade);
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin: 6px 0 10px;
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
+}
+
+.timer-controls {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.timer-select {
+    background: #000;
+    color: var(--c-hl-green);
+    border: 1px solid var(--c-metal);
+    font-family: var(--f-arcade);
+    font-size: 0.75rem;
+    padding: 6px 8px;
+}
+
+.timer-controls .a-btn,
+.timer-controls .b-btn {
+    flex: 0 0 auto;
+    padding: 6px 14px;
+    font-size: 0.7rem;
+}
+
+.timer-controls .a-btn:disabled,
+.timer-controls .b-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
 } 
 
 
